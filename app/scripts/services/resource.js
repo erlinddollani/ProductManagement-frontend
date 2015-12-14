@@ -19,10 +19,10 @@ angular.module('Commit.services')
       }
     }*/
 
-    /*return the data resource object
-    return $resource(appSettings.apiBasepoint + "api/products/:id");*/
+    /*return the data resource object*/
+    return $resource(appSettings.apiBasepoint + "api/products/:id");
 
-    /*extended the url path*/
-    return $resource(appSettings.apiBasepoint + "api/products/:search");
+    /*extended the url path
+    return $resource(appSettings.apiBasepoint + "api/products/:search");*/
 
 });
