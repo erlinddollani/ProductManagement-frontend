@@ -18,9 +18,10 @@
   </div>
 </div>
 
-<div class="panel panel-primary">
+<div class="panel panel-default">
   <div class="panel-heading" style="font-size:large">
     <span >Product List</span>
+    <button type="button" class="btn btn-sm btn-success pull-right" name="create" data-toggle="tooltip" data-placement="top" uib-tooltip="Add New Product" ng-click="saveNewProduct()"><i class="glyphicon glyphicon-plus"></i></button>
   </div>
 
   <div class="panel-body">
@@ -32,7 +33,7 @@
           <th>Code</th>
           <th>Available</th>
           <th>Price</th>
-          <th>Create/Update/Delete</th>
+          <th>Update/Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -44,9 +45,8 @@
           <td>{{ product.price | currency }}</td>
           <td>
             <div class="text-center">
-              <button type="button" class="btn btn-xs btn-success" name="create"><i class="glyphicon glyphicon-plus"></i></button>
-              <button type="button" class="btn btn-xs btn-warning" name="update"><i class="glyphicon glyphicon-arrow-up"></i></button>
-              <button type="button" class="btn btn-xs btn-danger" name="delete"><i class="glyphicon glyphicon-remove"></i></button>
+              <button type="button" class="btn btn-xs btn-warning" name="update" data-toggle="tooltip" data-placement="top" uib-tooltip="Modify" ng-click="editProduct(product.productId)"><i class="glyphicon glyphicon-pencil"></i></button>
+              <button type="button" class="btn btn-xs btn-danger" name="delete" data-toggle="tooltip" data-placement="top" uib-tooltip="Delete" ng-click="delete(product.productId)"><i class="glyphicon glyphicon-remove"></i></button>
             </div>
           </td>
         </tr>

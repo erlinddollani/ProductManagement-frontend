@@ -1,0 +1,64 @@
+<div class="modal-header">
+  <h3 class="modal-title" ng-bind="title"></h3>
+</div>
+<div class="modal-body">
+  <form name="productForm" class="form-horizontal" novalidate>
+    <!--<div class="form-group"
+         ng-class="{'has-error':productForm.inputProductName.$invalid && productForm.inputProductName.$dirty}">-->
+    <div class="form-group">
+      <label for="productName" class="control-label col-xs-3">Product Name</label>
+      <div class="col-xs-6">
+        <input type="text"
+               id="inputProductName"
+               name="inputProductName"
+               class="form-control"
+               ng-model="product.productName"
+               required="true"
+               placeholder=""
+               ng-minlength="1"
+               ng-maxlength="30">
+      </div>
+      <!--
+      <span class="help-block has-error">
+        <span ng-show="productForm.inputProductName.$error.required">
+          Product Name is required.
+        </span>
+        <span ng-show="productForm.inputProductName.$error.minlength">
+          Product Name must be at least 1 character in length.
+        </span>
+        <span ng-show="productForm.inputProductName.$error.maxlength">
+          Product Name cannot exceed 12 characters in length.
+        </span>
+      </span> -->
+    </div>
+    <div class="form-group">
+      <label for="productCode" class="control-label col-xs-3">Product Code</label>
+      <div class="col-xs-6">
+        <input type="text" class="form-control" ng-model="product.productCode" required="true" placeholder="">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="price" class="control-label col-xs-3">Price</label>
+      <div class="col-xs-6">
+        <input type="number" class="form-control" ng-model="product.price" value="price|currency" required="true" placeholder="">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="releasedDate" class="control-label col-xs-3">Released Date</label>
+      <div class="col-xs-6">
+        <input type="datetime" class="form-control" ng-model="product.releaseDate" required="true" ng-init="product.releaseDate='2015-07-08T08:00:00'">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="description" class="control-label col-xs-3">Description</label>
+      <div class="col-xs-9">
+        <textarea class="form-control" placeholder="" ng-model="product.description" required="true"></textarea>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-sm btn-success" name="buttonOk" ng-click="ok()" ng-disabled="form.$invalid">Save</button>
+  <button type="button" class="btn btn-sm btn-warning" name="buttonCancel" ng-click="cancel()">Close</button>
+</div>
+</div>
