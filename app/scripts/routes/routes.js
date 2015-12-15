@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('Commit.routes', [])
+angular.module('Commit.routes', [
+  'Commit.products.routes'])
    .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
       $stateProvider
         .state('Commit', {

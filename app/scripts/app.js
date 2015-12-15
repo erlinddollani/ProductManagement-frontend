@@ -9,6 +9,7 @@
  * Main module of the application.
  */
 angular.module('Commit', [
+      'ui.bootstrap',
       'ui.router',
       'ngAnimate',
       'ngCookies',
