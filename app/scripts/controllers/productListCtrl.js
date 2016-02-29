@@ -53,14 +53,14 @@ angular.module('Commit.controllers')
     $scope.GetDataById = function(productId) {
       productResource.get({id: productId}, function(data){
         $scope.product = data;
+      },function(error){
+        var err = error.statusText + "\r\n";// will display internal server error
+        // to display more specific actual error
+        if(error.data.exceptionMessage)
+          err+=error.data.exceptionMessage;
+        console.log(err);
       });
     };
-
-    if($scope.product && $scope.product.productId) {
-      $scope.title = "Edit: " + $scope.product.productName;
-    } else {
-      $scope.title = "New Product";
-    }
 
 /* * * editProduct()
 --------------------------------------- */
@@ -90,6 +90,16 @@ angular.module('Commit.controllers')
                 function(data) {
                   console.log(data);
                   getAllProducts();
+                },function(error){
+                  var err = error.statusText + "\r\n";
+                  if(error.data.modelState) {
+                    for (var key in response.data.modelState) {
+                      err+= response.data.modelState[key] + "\r\n";
+                    }
+                  }
+                  if(error.data.exceptionMessage)
+                    err+=error.data.exceptionMessage;
+                  console.log(err);
                 })
             };
             $scope.cancel = function() {
@@ -117,6 +127,11 @@ angular.module('Commit.controllers')
                 function(data) {
                   console.log(data);
                   getAllProducts();
+                },function(error){
+                  var err = error.statusText + "\r\n";
+                  if(error.data.exceptionMessage)
+                    err+=error.data.exceptionMessage;
+                  console.log(err);
                 });
             };
             $scope.cancel = function() {

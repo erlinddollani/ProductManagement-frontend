@@ -22,8 +22,7 @@ angular.module('Commit.services')
     /*return the data resource object*/
     // null is for the default parameter
     // {'update'} is for custom actions, we decide to call it 'update'
-    return $resource(appSettings.apiBasepoint + "api/products/:id", null,
-      {
+    return $resource(appSettings.apiBasepoint + "api/products/:id", null, {
         'update':{method: 'PUT'}
       });
 
