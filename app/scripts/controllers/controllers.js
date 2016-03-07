@@ -1,3 +1,5 @@
 'use strict';
 
-angular.module('Commit.controllers', []);
+angular.module('Commit.controllers', [
+  
+]);

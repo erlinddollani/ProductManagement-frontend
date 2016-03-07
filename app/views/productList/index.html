@@ -1,0 +1,56 @@
+<div ng-if="isLoggedIn()" class="panel panel-success">
+  <div class="panel-heading" style="font-size:large; cursor:pointer" ng-click="show=!show">
+    <span>Filter products by Code</span>
+  </div>
+
+  <div class="panel-body" ng-show="!show">
+    <div class="row">
+      <div class="col-sm-6">
+        <input type="text" class="form-control" ng-model="productCode" ng-keypress="($event.charCode==13)?filterCode():return" name="code" placeholder="Code"/>
+      </div>
+    </div><br>
+    <div class="row">
+      <div class="col-sm-4">
+        <button type="button" name="button" class="btn btn-sm btn-success" ng-click="filterCode()">Filter</button>
+        <button type="button" name="button" class="btn btn-sm btn-warning" ng-click="clearCode()">Clear</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div ng-if="isLoggedIn()" class="panel panel-default">
+  <div class="panel-heading" style="font-size:large">
+    <span >Product List</span>
+    <button type="button" class="btn btn-sm btn-success pull-right" name="create" data-toggle="tooltip" data-placement="top" uib-tooltip="Add New Product" ng-click="saveNewProduct()"><i class="glyphicon glyphicon-plus"></i></button>
+  </div>
+
+  <div class="panel-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Product</th>
+          <th>Code</th>
+          <th>Available</th>
+          <th>Price</th>
+          <th>Update/Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="product in products">
+          <td>{{ product.productId }}</td>
+          <td>{{ product.productName}}</td>
+          <td>{{ product.productCode }}</td>
+          <td>{{ product.releaseDate | date }}</td>
+          <td>{{ product.price | currency }}</td>
+          <td>
+            <div class="text-center">
+              <button type="button" class="btn btn-xs btn-warning" name="update" data-toggle="tooltip" data-placement="top" uib-tooltip="Modify" ng-click="editProduct(product.productId)"><i class="glyphicon glyphicon-pencil"></i></button>
+              <button type="button" class="btn btn-xs btn-danger" name="delete" data-toggle="tooltip" data-placement="top" uib-tooltip="Delete" ng-click="delete(product.productId)"><i class="glyphicon glyphicon-remove"></i></button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
