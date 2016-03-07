@@ -19,7 +19,7 @@
                <li ui-sref-active="active"><a ui-sref="Commit.products">Products</a></li>
                <li><a>Contact</a></li>
             </ul>
-            <form ng-show="!isLoggedIn" class="navbar-form navbar-right">
+            <form ng-show="!isLoggedIn()" class="navbar-form navbar-right">
               <div class="form-group">
                 <input type="text" name="username" placeholder="username" class="form-control" ng-model="userData.email">
               </div>

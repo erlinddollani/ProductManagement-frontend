@@ -1,11 +1,15 @@
 'use strict';
 
 angular.module('Commit.controllers')
-  .controller('productListController', function($scope, $uibModal, productResource){
+  .controller('productListController', function($scope, $uibModal, productResource, currentUser){
 
     $scope.show = true;
     $scope.productCode="";
     $scope.product = {};
+
+    $scope.isLoggedIn = function(){
+      return currentUser.getProfile().isLoggedIn;
+    };
 
     $scope.filterCode = function() {
       /* Query String */

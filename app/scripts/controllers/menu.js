@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('Commit.controllers')
-  .controller('menuController', function($scope, userAccount){
-    $scope.isLoggedIn = false;
-    $scope.message = '';
-
+  .controller('menuController', function($scope, userAccount, currentUser){
+    $scope.isLoggedIn = function(){
+      return currentUser.getProfile().isLoggedIn;
+    };
+    console.log(currentUser);
     $scope.userData = {
       userName: '',
       email: '',
@@ -39,14 +40,12 @@ angular.module('Commit.controllers')
 
       userAccount.login.loginUser($scope.userData,
         function(data){
-          $scope.isLoggedIn = true;
           $scope.message = "";
           $scope.password = "";
-          $scope.token = data.access_token;
-          console.log($scope.token);
+          //$scope.token = data.access_token;
+          currentUser.setProfile($scope.userData.userName, data.access_token);
         }, function(err){
           $scope.password = "";
-          $scope.isLoggedIn = false;
           $scope.message = err.statusText + "\r\n";
           if(err.data != null)
             $scope.message += err.data.exceptionMessage;

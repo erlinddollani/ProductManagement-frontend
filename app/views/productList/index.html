@@ -1,4 +1,4 @@
-<div class="panel panel-success">
+<div ng-if="isLoggedIn()" class="panel panel-success">
   <div class="panel-heading" style="font-size:large; cursor:pointer" ng-click="show=!show">
     <span>Filter products by Code</span>
   </div>
@@ -18,7 +18,7 @@
   </div>
 </div>
 
-<div class="panel panel-default">
+<div ng-if="isLoggedIn()" class="panel panel-default">
   <div class="panel-heading" style="font-size:large">
     <span >Product List</span>
     <button type="button" class="btn btn-sm btn-success pull-right" name="create" data-toggle="tooltip" data-placement="top" uib-tooltip="Add New Product" ng-click="saveNewProduct()"><i class="glyphicon glyphicon-plus"></i></button>
